@@ -1,6 +1,5 @@
-import { Component, input, Input , computed, output, EventEmitter, Output} from '@angular/core';
-import { type User } from './user.model';
-
+import { Component, signal, computed } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
 
 
 @Component({
@@ -10,27 +9,14 @@ import { type User } from './user.model';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  // @Input({ required:true}) id!:string;
-  // @Input({ required:true }) avatar!:string;
-  // @Input({ required:true }) name!:string;
-  @Input({required:true}) user!: User;
-  @Input({required: true}) selected!:boolean;
-  @Output() select = new EventEmitter<string>();
+  selectedUser = signal(DUMMY_USERS[rendomIndex]);
 
-  // select = output<string>();
-  // avatar = input.required<string>();
-  // name = input.required<string>();
+  imagePath = computed(()=> '../../assets/users/' + this.selectedUser().avatar);
+  
 
-  // imagePath = computed(()=> {
-  //    return '../../assets/users/'+this.avatar(); 
-    // })
-
-  get imagePath(){
-    return '../../assets/users/'+this.user.avatar;
-  }
-
-  onSelectUser(){ 
-    this.select.emit(this.user.id)
+  onSelectUser(){
+    const rendomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
+    this.selectedUser.set(DUMMY_USERS[rendomIndex]);
   }
 }
 
