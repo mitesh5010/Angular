@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 const rendomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
@@ -10,5 +10,13 @@ const rendomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  selectedUser = DUMMY_USERS[rendomIndex];
+  selectedUser = signal(DUMMY_USERS[rendomIndex]);
+
+  imagePath = computed(()=> '../../assets/users/' + this.selectedUser().avatar);
+  
+
+  onSelectUser(){
+    const rendomIndex = Math.floor(Math.random()*DUMMY_USERS.length)
+    this.selectedUser.set(DUMMY_USERS[rendomIndex]);
+  }
 }
