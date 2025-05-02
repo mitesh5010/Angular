@@ -1,18 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NewTaskComponent } from "./new-task/new-task.component";
 =======
 >>>>>>> cac568e (create task component for each user and learn about difference of !/?)
+=======
+import { NewTaskComponent } from "./new-task/new-task.component";
+>>>>>>> de14a79 (create Add task component and cancle event)
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
 <<<<<<< HEAD
+<<<<<<< HEAD
   imports: [TaskComponent, NewTaskComponent],
 =======
   imports: [TaskComponent],
 >>>>>>> cac568e (create task component for each user and learn about difference of !/?)
+=======
+  imports: [TaskComponent, NewTaskComponent],
+>>>>>>> de14a79 (create Add task component and cancle event)
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -20,10 +28,15 @@ export class TasksComponent {
   @Input({required:true}) userId!:string;
   @Input({required: true}) name!:string;
 <<<<<<< HEAD
+<<<<<<< HEAD
   isAddingTask =false;
 
 =======
 >>>>>>> cac568e (create task component for each user and learn about difference of !/?)
+=======
+  isAddingTask =false;
+
+>>>>>>> de14a79 (create Add task component and cancle event)
   tasks = [
     {
       id: 't1',
@@ -63,6 +76,9 @@ export class TasksComponent {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> de14a79 (create Add task component and cancle event)
   onStartAddTask(){
     this.isAddingTask =true; 
   }
@@ -71,8 +87,11 @@ export class TasksComponent {
     this.isAddingTask =false;
   }
 
+<<<<<<< HEAD
 =======
 >>>>>>> cac568e (create task component for each user and learn about difference of !/?)
 =======
 >>>>>>> 4a43422 (make complete button interective)
+=======
+>>>>>>> de14a79 (create Add task component and cancle event)
 }
