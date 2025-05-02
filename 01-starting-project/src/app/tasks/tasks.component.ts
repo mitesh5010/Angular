@@ -1,19 +1,29 @@
 import { Component, Input } from '@angular/core';
 import { TaskComponent } from "./task/task.component";
+<<<<<<< HEAD
 import { NewTaskComponent } from "./new-task/new-task.component";
+=======
+>>>>>>> cac568e (create task component for each user and learn about difference of !/?)
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
+<<<<<<< HEAD
   imports: [TaskComponent, NewTaskComponent],
+=======
+  imports: [TaskComponent],
+>>>>>>> cac568e (create task component for each user and learn about difference of !/?)
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
   @Input({required:true}) userId!:string;
   @Input({required: true}) name!:string;
+<<<<<<< HEAD
   isAddingTask =false;
 
+=======
+>>>>>>> cac568e (create task component for each user and learn about difference of !/?)
   tasks = [
     {
       id: 't1',
@@ -44,6 +54,7 @@ export class TasksComponent {
     return this.tasks.filter((task)=>task.userId===this.userId);
   }
 
+<<<<<<< HEAD
   onCompleteTask(id:string){
     this.tasks = this.tasks.filter((task)=>task.id !== id)
   }
@@ -56,4 +67,6 @@ export class TasksComponent {
     this.isAddingTask =false;
   }
 
+=======
+>>>>>>> cac568e (create task component for each user and learn about difference of !/?)
 }
