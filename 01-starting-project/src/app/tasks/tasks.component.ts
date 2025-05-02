@@ -55,10 +55,14 @@ export class TasksComponent {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4a43422 (make complete button interective)
   onCompleteTask(id:string){
     this.tasks = this.tasks.filter((task)=>task.id !== id)
   }
 
+<<<<<<< HEAD
   onStartAddTask(){
     this.isAddingTask =true; 
   }
@@ -69,4 +73,6 @@ export class TasksComponent {
 
 =======
 >>>>>>> cac568e (create task component for each user and learn about difference of !/?)
+=======
+>>>>>>> 4a43422 (make complete button interective)
 }
