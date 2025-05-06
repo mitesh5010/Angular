@@ -1,15 +1,15 @@
 import { Component, input, Input , computed, output, EventEmitter, Output} from '@angular/core';
 import { type User } from './user.model';
-import { CardComponent } from "../shared/card/card.component";
+
 
 
 
 @Component({
   selector: 'app-user',
-  standalone: true,
+  standalone: false,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
-  imports: [CardComponent]
+  // imports: [CardComponent]
 })
 export class UserComponent {
   // @Input({ required:true}) id!:string;
