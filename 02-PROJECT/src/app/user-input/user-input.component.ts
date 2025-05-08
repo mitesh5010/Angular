@@ -1,6 +1,7 @@
 import { Component, EventEmitter, output, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type InvestmentInput } from '../investment-input.model';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-user-input',
@@ -18,14 +19,16 @@ export class UserInputComponent {
   // enterDuration = '10';
 
   //using signals
-  calculate = output<InvestmentInput>();
   enterInitialInvestment = signal('0');
   enterAnnualInvestment = signal('0');
   enterExpectedReturn = signal('5');
   enterDuration = signal('10');
 
+  constructor(private investmentService : InvestmentService) {}
+
   onSubmit(){
-    this.calculate.emit({
+
+    this.investmentService.calculateInvestmentResults({
       // Convert string inputs to numbers using the + plus operator
       initialInvestment: +this.enterInitialInvestment(),
       annualInvestment: +this.enterAnnualInvestment(),
