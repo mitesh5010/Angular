@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { UserInputComponent } from './user-input/user-input.component';
 import { type InvestmentInput } from './investment-input.model';
@@ -11,14 +11,24 @@ import { InvestmentResultsComponent } from "./investment-results/investment-resu
   imports: [HeaderComponent, UserInputComponent, InvestmentResultsComponent],
 })
 export class AppComponent {
-  resultData?: {
+  // resultData?: {
+  //   year: number;
+  //   interest: number;
+  //   valueEndOfYear: number;
+  //   annualInvestment: number;
+  //   totalInterest: number;
+  //   totalAmountInvested: number;
+  // }[];
+
+  //using signal to create a reactive variable
+  resultData = signal<{
     year: number;
     interest: number;
     valueEndOfYear: number;
     annualInvestment: number;
     totalInterest: number;
     totalAmountInvested: number;
-  }[];
+  }[] | undefined >(undefined);
 
   onCalculateInvestmentResults(data: InvestmentInput) {
     const annualData = [];
@@ -42,6 +52,7 @@ export class AppComponent {
       });
     }
 
-    this.resultData = annualData;
+    // this.resultData = annualData;
+    this.resultData.set(annualData); // update the signal with new data
   }
 }
