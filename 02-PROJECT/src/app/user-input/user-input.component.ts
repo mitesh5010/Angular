@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, output, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { type InvestmentInput } from '../investment-input.model';
 
@@ -11,19 +11,32 @@ import { type InvestmentInput } from '../investment-input.model';
 })
 export class UserInputComponent {
 
-  @Output() calculate = new EventEmitter<InvestmentInput>();
-  enterInitialInvestment = '0';
-  enterAnnualInterestRate = '0';
-  enterExpectedReturn = '5';
-  enterDuration = '10';
+  // @Output() calculate = new EventEmitter<InvestmentInput>();
+  // enterInitialInvestment = '0';
+  // enterAnnualInvestment = '0';
+  // enterExpectedReturn = '5';
+  // enterDuration = '10';
+
+  //using signals
+  calculate = output<InvestmentInput>();
+  enterInitialInvestment = signal('0');
+  enterAnnualInvestment = signal('0');
+  enterExpectedReturn = signal('5');
+  enterDuration = signal('10');
 
   onSubmit(){
     this.calculate.emit({
       // Convert string inputs to numbers using the + plus operator
-      initialInvestment: +this.enterInitialInvestment,
-      annualInvestment: +this.enterAnnualInterestRate,
-      expectedReturn: +this.enterExpectedReturn,
-      duration: +this.enterDuration
+      initialInvestment: +this.enterInitialInvestment(),
+      annualInvestment: +this.enterAnnualInvestment(),
+      expectedReturn: +this.enterExpectedReturn(),
+      duration: +this.enterDuration()
     });
+
+    // Reset the input fields to their default values
+    this.enterInitialInvestment.set('0');
+    this.enterAnnualInvestment.set('0');
+    this.enterExpectedReturn.set('5');
+    this.enterDuration.set('10');
   }
 }
