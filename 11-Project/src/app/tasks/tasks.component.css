@@ -1,3 +1,11 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover,
+a:active {
+  color: #9b79cb;
+}
 ul {
   list-style: none;
   margin: 1rem 0;
